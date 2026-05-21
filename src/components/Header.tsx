@@ -90,7 +90,7 @@ const Header = () => {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="container mx-auto px-3 max-w-full">
+      <div className="container mx-auto px-6 md:px-14 max-w-full">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex items-center gap-2 sm:gap-3">

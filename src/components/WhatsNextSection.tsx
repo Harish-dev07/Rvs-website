@@ -36,7 +36,7 @@ const WhatsNextSection = () => {
 
   return (
     <section id="whats-next" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-14">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

@@ -38,7 +38,7 @@ const StatsSection = () => {
 
   return (
     <section id="summary" className="py-20 bg-secondary">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-14">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

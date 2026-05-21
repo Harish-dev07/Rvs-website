@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Cloud, Users, GraduationCap, ClipboardCheck } from "lucide-react";
+import { Cloud, Users, GraduationCap, ClipboardCheck,Bot } from "lucide-react";
 
 const services = [
   {
@@ -17,14 +17,14 @@ const services = [
   },
   {
     icon: Users,
-    title: "Corporate-Ready Fresher Programs",
+    title: "Consulting as a Service (CAAS)",
     points: [
-      "Industry Orientation",
-      "Soft Skills Training",
-      "Project Management",
-      "Real-world Experience"
+      "Strategic IT Consulting",
+      "AI Transformation Services",
+      "Process Optimization",
+      "Scalable Innovation Solutions"
     ],
-    color: "hsl(220 20% 25%)"
+    color: "hsl(43, 96%, 55%)"
   },  
   {
     icon: GraduationCap,
@@ -35,16 +35,27 @@ const services = [
       "Hands-on Projects",
       "Certification Support"
     ],
-    color: "hsl(220 20% 25%)"
+    color: "hsl(210 90% 55%)"
   },
   {
     icon: ClipboardCheck,
-    title: "Interview as a Service (IAAS)",
+    title: "HI-FI – Human Insight & Future Intelligence",
     points: [
-      "Technical Assessments",
-      "Behavioral Interviews",
-      "Skills Evaluation",
-      "Candidate Reports"
+      "AI Recruitment Framework",
+      "Smart Candidate Evaluation",
+      "Secure Verification Process",
+      "Intelligent Hiring Solutions"
+    ],
+    color: "hsl(43, 96%, 55%)"
+  },
+  {
+    icon: Bot,
+    title: "AI-Enabled Culture",
+    points: [
+      "AI-First Culture",
+      "Innovation & Automation",
+      "Continuous Learning",
+      "Human-AI Collaboration"
     ],
     color: "hsl(210 90% 55%)"
   }
@@ -54,6 +65,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const Icon = service.icon;
+  const isLast = index === services.length - 1 || index === services.length - 2;
 
   return (
     <motion.div
@@ -65,12 +77,14 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
         duration: 0.6,
         ease: "easeOut",
       }}
-      className="
+      className={`
         relative bg-background border rounded-xl p-8 
         overflow-hidden shadow-md hover:shadow-xl 
-        transition-all duration-500 hover:-translate-y-2
-      "
+        transition-all duration-500 hover:-translate-y-2 
+       ${isLast ? "md:col-span-2 lg:col-span-3" : "lg:col-span-2"}
+      `}
     >
+
       {/* STEP CUT CORNER */}
       <div
         className="absolute top-0 right-0 w-16 h-16"
@@ -115,7 +129,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto md:px-14 px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -130,7 +144,7 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}

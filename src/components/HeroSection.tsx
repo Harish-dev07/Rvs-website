@@ -13,7 +13,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-black "
+      className="relative  min-h-screen flex items-center overflow-hidden bg-black "
     >
       {/* Background */}
       <div
