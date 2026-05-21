@@ -97,18 +97,16 @@ const HeroSection = () => {
 
   <div className="flex flex-row sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
     <Button
-      size="lg"
       onClick={() => scrollToSection("#services")}
-      className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-xl px-8 py-6 text-lg"
+      className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-xl  text-lg"
     >
       Explore Services <ArrowRight className="ml-2 h-5 w-5" />
     </Button>
 
     <Button
-      size="lg"
       variant="outline"
       onClick={() => scrollToSection("#contact")}
-      className="border-2 border-primary-foreground text-primary hover:bg-primary-foreground/20 px-8 py-6 text-lg backdrop-blur-md"
+      className="border-2 border-primary-foreground text-primary hover:bg-primary-foreground/20  text-lg backdrop-blur-md"
     >
       Contact Us
     </Button>
