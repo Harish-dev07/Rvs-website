@@ -78,6 +78,7 @@ const Header = () => {
       }
 
       lastScrollY.current = currentScrollY;
+      
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
