@@ -217,7 +217,8 @@ const Footer = () => {
                 © {currentYear} Royal Value Solutions. All rights reserved.
               </p>
               <p className="text-xs text-slate-500">
-                Empowering businesses through Technology • Training • Talent
+               Empowering Businesses through AI  Technology • Transformation • Training
+
               </p>
             </div>
 
