@@ -1,17 +1,56 @@
-import founderImg from "@/assets/founder.png";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
- 
+import { Zap, Users, GraduationCap } from "lucide-react";
+import officeImage from "@/assets/office_room.png";
+
+const pillars = [
+  {
+    icon: Zap,
+    title: "AI-Powered Technology Services",
+    description: "We deliver end-to-end digital solutions through custom enterprise applications, cloud solutions, AI automation, analytics dashboards, and managed IT services."
+  },
+  {
+    icon: Users,
+    title: "IT Consulting & Digital Transformation",
+    description: "Strategic IT consulting, cloud modernization, AI adoption, enterprise architecture, and scalable digital transformation solutions."
+  },
+  {
+    icon: GraduationCap,
+    title: "Hi-Fi Talent & Workforce Solutions",
+    description: "Human Insight & Background Verification System integrated with AI-enabled training, assessment, certification, recruitment, and industry-ready workforce development."
+  }
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="about" className="py-24 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+        className="absolute top-0 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           x: [0, 50, 0],
@@ -20,7 +59,7 @@ const AboutSection = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+        className="absolute -bottom-20 right-0 w-[600px] h-96 bg-accent/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           x: [0, -50, 0],
@@ -32,84 +71,176 @@ const AboutSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-6xl mx-auto"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="max-w-7xl mx-auto"
         >
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-6 text-gradient"
+          {/* Header Section */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-20"
           >
-            Your Partner in Digital Transformation
-          </motion.h2>
-          
-          <div className="flex flex-col md:flex-row gap-8 items-start mt-16">
-            <motion.div
-              initial={{ opacity: 0, x: -60, rotateY: -15 }}
-              animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="flex-1"
+            <motion.h2 
+              className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             >
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-xl font-bold text-foreground/80 leading-relaxed mb-6 text-center translate-y-9"
-              >
-                At RVS, we bridge the gap between ambitious businesses and exceptional technology talent. 
-                Our comprehensive approach combines strategic consulting, hands-on training, and innovative 
-                solutions to drive sustainable growth and competitive advantage.
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="p-10 glass-card rounded-lg hover:shadow-2xl transition-all mt-[80px]"
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <h3 className="text-2xl font-bold mb-4 text-[#ffb400] text-center top-[-10px]">Why Choose RVS?</h3>
-                <p className="text-base text-foreground/70 leading-relaxed text-center font-semibold">
-                  With <span 
-                    className="text-[#ffb508] font-semibold" 
-                    style={{ textShadow: "2px 2px 4px rgba(188, 215, 30, 0.4)" }}
-                  >15+ years of experience</span> in the IT industry, 
-                  we understand the challenges businesses face in today's rapidly evolving digital landscape. 
-                  Our unique combination of technical expertise, industry insights, and personalized service 
-                  ensures that every client receives solutions tailored to their specific needs and goals.
-                </p>
-              </motion.div>
+              Who We Are
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
+            >
+              RVS is an AI-driven technology company specializing in digital transformation, enterprise IT solutions, consulting, and modern workforce development. We help businesses scale through intelligent automation, cloud technologies, and innovative enterprise systems.
+            </motion.p>
+          </motion.div>
+
+          {/* Core Pillars Section */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-20"
+          >
+            <h3 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Pillars</h3>
+            <motion.div
+              className="grid md:grid-cols-3 gap-8"
+              variants={containerVariants}
+            >
+              {pillars.map((pillar, index) => {
+                const Icon = pillar.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    className="relative group"
+                  >
+                    <motion.div
+                      className="p-8 rounded-2xl bg-white/50 backdrop-blur-xl border border-primary/10 h-full"
+                      whileHover={{ 
+                        y: -10, 
+                        boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+                        borderColor: "hsl(214 95% 45% / 0.3)"
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.div
+                        className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 group-hover:shadow-lg"
+                        animate={{ rotateY: [0, 10, 0] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                      >
+                        <Icon className="w-8 h-8 text-white" />
+                      </motion.div>
+                      <h4 className="text-xl font-bold mb-4 text-foreground">{pillar.title}</h4>
+                      <p className="text-foreground/70 leading-relaxed">{pillar.description}</p>
+                      
+                      <motion.div
+                        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 pointer-events-none"
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </motion.div>
+
+          {/* Mission & Office Section */}
+          <motion.div
+            variants={itemVariants}
+            className="grid md:grid-cols-2 gap-12 items-center mb-20"
+          >
+            {/* Mission Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 rounded-3xl p-12 border border-primary/20"
+            >
+              <h3 className="text-3xl font-bold mb-6 text-foreground">Our Mission</h3>
+              <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                To empower businesses through AI-driven IT solutions & HI-FI workforce transformation while enabling organizations to access quality engineers.
+              </p>
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                Focus on transforming aspiring and unemployed individuals into industry-ready professionals through advanced training, mentorship, and real-world exposure, contributing to national growth through innovation, technology, and digital excellence.
+              </p>
             </motion.div>
 
+            {/* Office Image */}
             <motion.div
-              initial={{ opacity: 0, x: 60, rotateY: 15 }}
-              animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-              className="relative flex-shrink-0 w-full md:w-80 lg:w-96"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative group"
             >
-              <motion.div 
-                className="relative rounded-2xl overflow-hidden shadow-2xl"
-                whileHover={{ scale: 1.05, rotateZ: 2 }}
-                transition={{ duration: 0.4 }}
+              <motion.div
+                className="relative rounded-3xl overflow-hidden border-2 border-primary/20 shadow-xl"
+                whileHover={{ borderColor: "hsl(214 95% 45% / 0.5)" }}
               >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 z-10"
+                <motion.img
+                  src={officeImage}
+                  alt="RVS Office"
+                  className="w-full h-auto object-cover rounded-3xl"
                   animate={{
-                    opacity: [0.3, 0.6, 0.3],
+                    scale: [1, 1.02, 1],
                   }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
-                <img
-                  src={founderImg}
-                  alt="Founder"
-                  className="w-full h-auto object-cover relative z-0"
-                />
+
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-3xl" />
+
+                {/* Badge */}
+                <motion.div
+                  className="absolute bottom-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-primary/30"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-primary font-semibold text-sm">Our Workspace</span>
+                </motion.div>
               </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
+
+          {/* Values Section */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-white/50 backdrop-blur-xl border border-primary/10 rounded-3xl p-12"
+          >
+            <h3 className="text-3xl font-bold mb-8 text-center text-foreground">Our Values</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Innovation",
+                  description: "Continuously pushing boundaries with cutting-edge AI and emerging technologies."
+                },
+                {
+                  title: "Excellence",
+                  description: "Delivering superior solutions and services that exceed client expectations."
+                },
+                {
+                  title: "Integrity",
+                  description: "Building trust through transparency, honesty, and ethical business practices."
+                }
+              ].map((value, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + idx * 0.1, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <h4 className="text-xl font-bold text-primary mb-3">{value.title}</h4>
+                  <p className="text-foreground/70 leading-relaxed">{value.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

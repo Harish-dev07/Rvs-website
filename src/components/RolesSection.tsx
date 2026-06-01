@@ -1,138 +1,201 @@
 import { motion } from "framer-motion";
-import { Code2, FlaskRound, Headphones, Cpu } from "lucide-react";
+import { Code2, FlaskRound, Users, Cpu, Zap, Shield } from "lucide-react";
 
 const roles = [
   {
-    icon: Code2,
-    bgIcon: Code2,
-    title: "Development",
+    icon: Zap,
+    title: "IT Consulting & Digital Transformation",
     items: [
-      ".NET Developers",
-      "Java Developers",
-      "Full Stack Developers",
-      "Frontend Developers",
-      "Backend Developers",
-      "Mobile App Developers",
+      "Custom Enterprise Application Development",
+      "Managed IT Services & Technical Support",
+      "Cloud Solutions & Migration Services",
+      "SaaS Product Development & Support",
+    ],
+  },
+  {
+    icon: Code2,
+    title: "Development & Automation",
+    items: [
+      "Workflow & Business Process Automation",
+      "Enterprise Application Development",
+      "Cloud-Native Development",
+      "Full Stack Development",
+    ],
+  },
+  {
+    icon: Users,
+    title: "Resource & Talent Solutions",
+    items: [
+      "Resource Augmentation",
+      "Dedicated Development Teams",
+      "Recruitment & Technical Screening",
+      "Placement Services",
     ],
   },
   {
     icon: FlaskRound,
-    bgIcon: FlaskRound,
-    title: "Testing & Quality",
+    title: "Training & Certification",
     items: [
-      "QA Engineers",
-      "Test Automation Engineers",
-      "Performance Testers",
-      "Manual Testers",
-      "Quality Analysts",
+      "Corporate Training Programs",
+      "Up-skilling & Re-skilling",
+      "Certification Programs",
+      "Industry-Aligned Curriculum",
     ],
   },
   {
-    icon: Headphones,
-    bgIcon: Headphones,
-    title: "Support & Operations",
+    icon: Shield,
+    title: "Support & Optimization",
     items: [
-      "Help Desk Technicians",
-      "IT Support Specialists",
-      "System Administrators",
-      "Network Administrators",
-      "Database Administrators",
+      "Maintenance & Performance Optimization",
+      "Technical Support & Troubleshooting",
+      "System Monitoring & Management",
+      "Security & Compliance Services",
     ],
   },
   {
     icon: Cpu,
-    bgIcon: Cpu,
     title: "Emerging Technologies",
     items: [
-      "Cloud Engineers",
-      "DevOps Engineers",
-      "Data Scientists",
-      "Machine Learning Engineers",
-      "Cybersecurity Analysts",
-      "AI Developers",
+      "AI & Machine Learning Solutions",
+      "Cloud Architecture",
+      "DevOps & Automation",
+      "Advanced Analytics & BI",
     ],
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 export default function RolesSection() {
   return (
-    <section className="py-20 bg-muted/30" id="roles">
-      <div className="container mx-auto px-6 md:px-14 flex flex-col items-center">
+    <section className="py-24 bg-gradient-to-b from-background via-muted/10 to-background relative overflow-hidden" id="roles">
+      {/* Background animations */}
+      <motion.div
+        className="absolute top-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, 30, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-10 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, -40, 0],
+        }}
+        transition={{ duration: 14, repeat: Infinity }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         {/* HEADER */}
-        <div className="text-center mb-16 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-600">
+        <motion.div 
+          className="text-center mb-20 max-w-3xl"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-6">
             Roles We Cover
           </h2>
-          <p className="text-lg text-muted-foreground mt-4">
-            From traditional IT roles to modern emerging technologies, we cover the complete IT workforce spectrum.
+          <p className="text-xl text-foreground/70 leading-relaxed">
+            From enterprise application development to emerging technologies, we cover the complete spectrum of IT and talent solutions to drive your business forward.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 2×2 CENTER GRID */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-[1800px] mx-auto place-items-stretch ">
+        {/* GRID */}
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto w-full"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {roles.map((role, index) => {
             const Icon = role.icon;
-            const Bg = role.bgIcon;
-
-            // animation directions
-            const animations = [
-              { x: -80, y: 0 },
-              { x: 80, y: 0 },
-              { x: -60, y: 60 },
-              { x: 60, y: 60 },
-            ];
 
             return (
               <motion.div
                 key={index}
-                initial={{
-                  opacity: 0,
-                  x: animations[index].x,
-                  y: animations[index].y,
-                  scale: 0.9,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  type: "spring",
-                }}
-                viewport={{ once: true }}
-                className="relative bg-white/70 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-8 w-full max-w-[900px] flex flex-col items-center text-center overflow-hidden"
+                variants={itemVariants}
+                className="group relative"
               >
-                {/* BACKGROUND BLUR ICON */}
-                <Bg className="absolute -right-6 -bottom-4 w-40 h-40 text-blue-200 opacity-20" />
+                <motion.div
+                  className="relative bg-white/50 backdrop-blur-xl border border-primary/10 rounded-2xl p-8 h-full overflow-hidden shadow-lg hover:shadow-2xl transition-all"
+                  whileHover={{ y: -8, borderColor: "hsl(214 95% 45% / 0.3)" }}
+                >
+                  {/* Background gradient */}
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(214 95% 45% / 0.1), hsl(210 90% 55% / 0.05))"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
 
-                {/* TOP ICON */}
-                <div className="w-14 h-14 flex items-center justify-center bg-blue-100 rounded-xl mb-5">
-                  <Icon className="w-7 h-7 text-blue-700" />
-                </div>
+                  {/* Icon */}
+                  <motion.div 
+                    className="relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-lg"
+                    animate={{ rotateY: [0, 15, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: index * 0.2 }}
+                  >
+                    <Icon className="w-7 h-7 text-white" />
+                  </motion.div>
 
-                {/* TITLE */}
-                <h3 className="text-2xl font-semibold text-blue-800 mb-5">
-                  {role.title}
-                </h3>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-bold text-foreground mb-6">
+                      {role.title}
+                    </h3>
 
-                {/* TAG PILLS */}
-                <div className="flex flex-wrap justify-center gap-3">
-                  {role.items.map((item, i) => (
-                    <span
-                      key={i}
-                      className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm border border-blue-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {role.items.map((item, i) => (
+                        <motion.span
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.1 + i * 0.05 }}
+                          className="px-3 py-2 bg-primary/10 text-primary text-sm font-medium rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors"
+                        >
+                          {item}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Corner decoration */}
+                  <div
+                    className="absolute top-0 right-0 w-20 h-20 opacity-10"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(214 95% 45%), transparent)",
+                      clipPath: "polygon(100% 0, 0 0, 100% 100%)"
+                    }}
+                  />
+                </motion.div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,9 +3,10 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import RolesSection from "@/components/RolesSection";
-import PartnersSection from "@/components/PartnersSection";
 import WhatsNextSection from "@/components/WhatsNextSection";
 import StatsSection from "@/components/StatsSection";
+import PartnersSection from "@/components/PartnersSection";
+import BlogsSection from "@/components/BlogsSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ const Index = () => {
         <WhatsNextSection />
         <StatsSection />
         <PartnersSection />
+        <BlogsSection />
         <TeamSection />
         <ContactSection />
         <Footer />
@@ -33,3 +35,4 @@ const Index = () => {
 };
 
 export default Index;
+
