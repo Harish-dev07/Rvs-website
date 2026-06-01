@@ -125,7 +125,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 font-light leading-relaxed max-w-3xl mx-auto"
           >
-            AI-Driven Technology • Enterprise Solutions • Workforce Transformation
+            Empowering Businesses through AI  Technology • Transformation • Training
           </motion.p>
 
           {/* Description */}

@@ -90,7 +90,7 @@ const PartnersSection = () => {
           <motion.h2
             className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
           >
-            Our Trusted Partners
+            Our Trusted Clients
           </motion.h2>
           <motion.p
             className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
