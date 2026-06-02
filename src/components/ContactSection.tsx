@@ -15,7 +15,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:RVS.DigitalGen@gmail.com?subject=Contact from ${formData.name}&body=${formData.message}%0D%0A%0D%0AFrom: ${formData.email}`;
+    const mailtoLink = `mailto:RVS.DigitalGen@rv-s.in?subject=Contact from ${formData.name}&body=${formData.message}%0D%0A%0D%0AFrom: ${formData.email}`;
     window.location.href = mailtoLink;
     toast({
       title: "Opening email client...",
@@ -67,8 +67,8 @@ const ContactSection = () => {
               <div>
                 <h3 className="font-semibold mb-1">Address</h3>
                 <p className="text-sm text-muted-foreground">
-                  T2, 1516/2, Vanakara Street,<br />
-                  M. Chavady, Thanjavur-613001
+                  T2, 1516/2,Jothi Complex, Vanakara Street, M. Chavady,<br />
+                 Thanjavur-613001
                 </p>
               </div>
             </motion.div>
@@ -111,7 +111,7 @@ const ContactSection = () => {
               </motion.div>
               <div>
                 <h3 className="font-semibold mb-1">Email</h3>
-                <p className="text-sm text-muted-foreground">RVS.DigitalGen@gmail.com</p>
+                <p className="text-sm text-muted-foreground">RVS.DigitalGen@rv-s.in</p>
               </div>
             </motion.div>
 
